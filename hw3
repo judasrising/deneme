@@ -1,0 +1,116 @@
+#include<stdio.h>
+#define N 5
+
+float my_arr[N];
+
+void function_1()   //Shows the options
+{
+    printf("1-Prime numbers until a limit\n");
+    printf("2-Reverse an integer\n");
+    printf("3-Sum of 5 float numbers\n");
+
+}
+
+int function_2()   //takes selection from the user
+{
+    int n;
+    scanf("%d",&n);
+
+    return n;
+}
+
+
+void function_3(int limit)   //Function that prints all prime numbers until the limit
+{
+    int i,j;
+    for(i=2; i<=limit; i++)   //Find all Prime numbers between 1 to limit
+    {
+        j=2;
+        while(i%j!=0)
+            j++;
+        if(i==j)
+            printf("%d ",i);
+
+    }
+
+}
+
+int function_4(int n) //Function to reverse a given number
+{
+    int reverse=0;
+    while (n != 0)
+    {
+      reverse = reverse*10;
+      reverse = reverse+n%10;
+      n=n/10;
+    }
+
+    return reverse;
+
+}
+
+void function_5() //Function that takes N float numbers from the use
+{
+
+    int i;
+
+    for(i=0; i<N; i++)  //Loop to input array elements
+    {
+        scanf_s("%f",&my_arr[i]);
+
+    }
+
+}
+
+float function_6() //Function to find sum of the array elements
+{
+
+    float sum=0;
+    int  i;
+    for(i=0; i<N; i++)  //Add each array element to sum
+        sum+=my_arr[i];
+
+    return sum;
+}
+
+
+int main()
+{
+    int limit,num,reversed,n;
+
+
+    function_1();
+    printf("Please select one of the options above: ");
+
+    switch(function_2())
+    {
+
+       case 1:
+           printf("Please enter limit for prime numbers: ");
+           scanf_s("%d",&limit);
+           function_3(limit);
+           break;
+
+       case 2:
+           printf("Please enter an integer number: ");
+           scanf_s("%d",&num);
+           reversed=function_4(num);
+           printf("Reversed number is: %d",reversed);
+           break;
+
+       case 3:
+           printf("Please enter %d float numbers: ",N);
+           function_5();
+           printf("Sum of the array %.2f",function_6());
+           break;
+
+       default:
+           printf("Invalid Option!!");
+           break;
+    }
+
+    getch();
+    return 0;
+
+}
+
